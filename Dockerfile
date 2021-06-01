@@ -20,14 +20,14 @@ RUN apk add nginx git
 
 RUN { crontab -l; echo "* * * * * php /var/www/artisan schedule:run >/dev/null 2>&1"; } | crontab -
 
-COPY ./docker/entrypoint.sh /usr/local/bin/php-entrypoint
+COPY ./entrypoint.sh /usr/local/bin/php-entrypoint
 RUN chmod +x /usr/local/bin/php-entrypoint
-COPY ./docker/web/www.conf /usr/local/etc/php-fpm.d/www.conf
+COPY ./web/www.conf /usr/local/etc/php-fpm.d/www.conf
 
 EXPOSE 80
 
-ADD docker/web/nginx.conf /etc/nginx/nginx.conf
-COPY docker/web/sites/* /etc/nginx/conf.d/
+ADD web/nginx.conf /etc/nginx/nginx.conf
+COPY web/sites/* /etc/nginx/conf.d/
 
 ENTRYPOINT ["entrypoint"]
 CMD ["php-fpm", "-R"]
