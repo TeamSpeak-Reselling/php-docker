@@ -29,5 +29,5 @@ EXPOSE 80
 ADD web/nginx.conf /etc/nginx/nginx.conf
 COPY web/sites/* /etc/nginx/conf.d/
 
-ENTRYPOINT ["entrypoint"]
+ENTRYPOINT ["php-entrypoint"]
 CMD ["php-fpm", "-R"]
