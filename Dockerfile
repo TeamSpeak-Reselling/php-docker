@@ -29,5 +29,11 @@ EXPOSE 80
 ADD web/nginx.conf /etc/nginx/nginx.conf
 COPY web/sites/* /etc/nginx/conf.d/
 
+COPY ./web/php.ini /usr/local/etc/php/php.ini
+
+RUN apk add --update supervisor && rm  -rf /tmp/* /var/cache/apk/*
+
+COPY supervisord.conf /etc/
+
 ENTRYPOINT ["php-entrypoint"]
 CMD ["php-fpm", "-R"]
