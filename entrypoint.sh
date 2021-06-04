@@ -20,4 +20,4 @@ fi
 exec "$@" &
 exec nginx
 exec crond
-exec supervisord --configuration /etc/supervisord.conf
+exec supervisord --nodaemon --configuration /etc/supervisord.conf &
