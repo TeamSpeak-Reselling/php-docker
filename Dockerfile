@@ -33,7 +33,5 @@ COPY ./web/php.ini /usr/local/etc/php/php.ini
 
 RUN apk add --update supervisor && rm  -rf /tmp/* /var/cache/apk/*
 
-COPY supervisord.conf /etc/
-
 ENTRYPOINT ["php-entrypoint"]
 CMD ["php-fpm", "-R"]
