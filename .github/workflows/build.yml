@@ -2,6 +2,7 @@ name: Build-Process
 
 on:
   push:
+    workflow_dispatch:
     branches:
       - '*'
 env:
